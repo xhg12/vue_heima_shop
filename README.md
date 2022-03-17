@@ -55,10 +55,20 @@ this.$refs.loginFormRef.resetFields();
 this.$refs.loginFormRef.validate(valid=>{})
 ```
 
-### Lints and fixes files
+## 左侧侧边栏一级分类图标注意点
 
 ```
-npm run lint
+  模板中的标签（在遍历的过程中给i标签动态设置class类从而动态设置图标）
+    <!-- 图标 -->
+    <i :class="iconsObj[item.id]"></i>
+  data中的数据
+    iconsObj: {
+    125: 'iconfont icon-users',
+    103: 'iconfont icon-tijikongjian',
+    101: 'iconfont icon-shangpin',
+    102: 'iconfont icon-danju',
+    145: 'iconfont icon-baobiao',
+    },
 ```
 
 ### Customize configuration
