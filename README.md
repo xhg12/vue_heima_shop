@@ -71,6 +71,14 @@ this.$refs.loginFormRef.validate(valid=>{})
     },
 ```
 
-### Customize configuration
+## 在权限管理中的角色列表时
+
+```
+删除角色指定权限时
+在函数中传入的两个参数(scope.row,rightId)
+为什么传scope.row而不传scope.row.id
+    因为删除了该角色对应的权限时要刷新该角色下权限，调用接口返回最新的权限数据，方便进行赋值
+    scope.row = res.data
+```
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
