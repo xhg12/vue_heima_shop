@@ -81,4 +81,10 @@ this.$refs.loginFormRef.validate(valid=>{})
     scope.row = res.data
 ```
 
+## 在开发商品管理的分类管理时用到的第三方库
+
+```
+npm i vue-table-with-tree-grid -S
+```
+
 See [Configuration Reference](https://cli.vuejs.org/config/).

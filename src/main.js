@@ -7,6 +7,7 @@ import './element/index'
 import './assets/css/global.css'
 // 导入字体图标
 import './assets/fonts/iconfont.css'
+import TreeTable from 'vue-table-with-tree-grid'
 
 import axios from 'axios'
 //为axios设置一下根路径（配置请求的根路径）
@@ -16,7 +17,7 @@ axios.interceptors.request.use((config) => {
   return config
 })
 Vue.prototype.$http = axios
-
+Vue.component('tree-table', TreeTable)
 Vue.use(VueRouter)
 
 Vue.config.productionTip = false
