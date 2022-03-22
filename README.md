@@ -87,4 +87,19 @@ this.$refs.loginFormRef.validate(valid=>{})
 npm i vue-table-with-tree-grid -S
 ```
 
+## 在开发添加商品时碰到的问题
+
+```
+:action="uploadURL"
+
+该请求发送请求用的不是ajax请求，用的是内部的请求，请求结果是无效的token
+
+所以必须自定义请求头携带token
+
+ //图片上传组件的headers请求头对象
+headersObj: {
+  Authorization: window.sessionStorage.getItem('token'),
+},
+```
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
