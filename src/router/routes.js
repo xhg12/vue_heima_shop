@@ -8,6 +8,7 @@ import Cate from '../components/goods/Cate.vue'
 import Params from '../components/goods/Params.vue'
 import List from '../components/goods/List.vue'
 import Add from '../components/goods/Add.vue'
+import Order from '../components/order/Order.vue'
 
 export default [
   {
@@ -31,6 +32,7 @@ export default [
       { path: '/params', component: Params },
       { path: '/goods', component: List },
       { path: '/goods/add', component: Add },
+      { path: '/orders', component: Order },
     ],
   },
 ]
