@@ -409,6 +409,7 @@ export default {
         this.$message.success('更新用户信息成功')
       })
     },
+
     //删除用户
     async deleteUserById(id) {
       //弹框询问用户是否删除数据
@@ -429,41 +430,18 @@ export default {
       //更新用户列表数据
       this.getUserList()
     },
-    //展示分配角色的对话框
-    async setRole(userInfo) {
-      this.userInfo = userInfo
-      //在展示对话框之前，获取所有的角色的列表
-      const { data: res } = await this.$http.get('roles')
-      if (res.meta.status !== 200) {
-        return this.$message.error('获取角色列表失败!')
-      }
-      this.roleList = res.data
-      this.setRoleDialogVisible = true
-    },
-    //点击按钮，分配角色
-    async saveRoleInfo() {
-      if (!this.selectedRoleId) {
-        return this.$message.error('请选择要分配的角色！')
-      }
-      const { data: res } = await this.$http.put(
-        `usre/${this.userInfo.id}/role`,
-        {
-          rid: this.selectedRoleId,
-        }
-      )
 
-      if (res.meta.status !== 200) {
-        this.$message.error('更新角色失败！')
+    // 清空input输入框调用的函数
+    removeInput() {
+      if (this.queryInfo.query === '') {
+        this.getUserList()
       }
-
-      this.$message.success('更新角色成功')
-      this.getUserList()
-      this.setRoleDialogVisible = false
     },
-    //监听分配角色对话框的关闭事件
-    setRoleDialogClosed() {
-      this.selectedRoleId = ''
-      this.userInfo = {}
+    // 输入内容，按回车调用的函数
+    searchUserList() {
+      this.userList = this.userList.filter((item) => {
+        return item.username.indexOf(this.queryInfo.query) !== -1
+      })
     },
     // 清空input输入框调用的函数
     removeInput() {
