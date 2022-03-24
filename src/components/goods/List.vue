@@ -17,6 +17,8 @@
             v-model="queryInfo.query"
             clearable
             @clear="getGoodsList"
+            @input="searchInput"
+            @keyup.enter.native="searchEnterGoods"
           >
             <el-button
               slot="append"
@@ -150,6 +152,20 @@ export default {
         this.$message.success('删除商品成功')
         this.getGoodsList()
       }
+    },
+
+    // 解决清空输入框必须刷新的bug
+    searchInput() {
+      if (this.queryInfo.query === '') {
+        this.getGoodsList()
+      }
+    },
+
+    // 点击回车搜索商品
+    searchEnterGoods() {
+      this.goodsList = this.goodsList.filter((item) => {
+        return item.goods_name.indexOf(this.queryInfo.query) !== -1
+      })
     },
   },
 }

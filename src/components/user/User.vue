@@ -18,6 +18,8 @@
             v-model="queryInfo.query"
             clearable
             @clear="getUserList"
+            @input="removeInput"
+            @keyup.enter.native="searchUserList"
           >
             <el-button
               slot="append"
@@ -235,7 +237,7 @@ export default {
         // 当前的页数
         pagenum: 1,
         // 当前每页显示多少条数据
-        pagesize: 2,
+        pagesize: 5,
       },
       userList: [],
       total: 0,
@@ -462,6 +464,18 @@ export default {
     setRoleDialogClosed() {
       this.selectedRoleId = ''
       this.userInfo = {}
+    },
+    // 清空input输入框调用的函数
+    removeInput() {
+      if (this.queryInfo.query === '') {
+        this.getUserList()
+      }
+    },
+    // 输入内容，按回车调用的函数
+    searchUserList() {
+      this.userList = this.userList.filter((item) => {
+        return item.username.indexOf(this.queryInfo.query) !== -1
+      })
     },
   },
 }
